@@ -1,6 +1,7 @@
 import os
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
+from fastapi.responses import JSONResponse
 from jose import jwt, JWTError
 from pydantic import BaseModel
 from datetime import datetime, timedelta, timezone
@@ -37,7 +38,7 @@ def generate_token(user: User):
         SECRET_KEY,
         algorithm=ALGORITHM,
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return JSONResponse(content={"access_token": access_token, "token_type": "bearer"}, media_type="application/json")
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):

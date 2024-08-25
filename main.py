@@ -25,8 +25,8 @@ class Note(BaseModel):
 
 @app.get("/notes")
 async def get_notes_route():
-    notes = get_notes()
-    return notes
+    notes = await get_notes()
+    return JSONResponse(content=jsonable_encoder(notes), media_type="application/json")
 
 
 @app.post("/token")
@@ -37,13 +37,13 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @app.get("/protected")
 async def protected_route(current_user: User = Depends(get_current_user)):
-    return {"message": f"Hello, {current_user.username}!"}
+    return JSONResponse(content={"message": f"Hello, {current_user.username}!"}, media_type="application/json")
 
 
 @app.post("/notes")
 async def create_note_route(note: Note):
     create_note_in_db(note)
-    return {"message": "Заметка добавлена"}
+    return {"message": "Note added"}
 
 
 def get_db_connection():
@@ -79,7 +79,7 @@ async def get_notes():
     notes = cur.fetchall()
     cur.close()
     conn.close()
-    return JSONResponse(content=notes, media_type="application/json")
+    return JSONResponse(content=jsonable_encoder(notes), media_type="application/json")
 
 
 @app.put("/notes/{note_id}")
@@ -97,6 +97,16 @@ async def update_note(note_id: int, note: Note):
         content={"message": "Note updated successfully"},
         media_type="application/json",
     )
+
+
+
+@app.delete("/notes/")
+def delete_all_notes():
+    with get_db_connection() as conn:
+        with conn.cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute("DELETE FROM notes")
+            conn.commit()
+    return {"message": "All notes deleted"}
 
 
 @app.delete("/notes/{note_id}")
