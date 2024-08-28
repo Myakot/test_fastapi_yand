@@ -30,12 +30,31 @@ def test_create_note_invalid_spelling(client):
     response = client.post("/notes", json=note)
     assert response.status_code == 200
 
-    expected_errors = [{'code': 1, 'pos': 0, 'row': 0, 'col': 0, 'len': 5, 'word': 'texxt',
-                        's': ['text', 'texture', 'txt', 'texet', 'texst', 'test', 'tex xt', 'texts', 'ext']}]
+    expected_errors = [
+        {
+            "code": 1,
+            "pos": 0,
+            "row": 0,
+            "col": 0,
+            "len": 5,
+            "word": "texxt",
+            "s": [
+                "text",
+                "texture",
+                "txt",
+                "texet",
+                "texst",
+                "test",
+                "tex xt",
+                "texts",
+                "ext",
+            ],
+        }
+    ]
 
     response_json = response.json()
-    assert 'errors' in response_json[0]
-    assert response_json[0]['errors'] == expected_errors
+    assert "errors" in response_json[0]
+    assert response_json[0]["errors"] == expected_errors
 
 
 def test_get_notes(client):
