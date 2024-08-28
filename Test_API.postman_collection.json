@@ -7,8 +7,80 @@
 	},
 	"item": [
 		{
+			"name": "Token to authorize",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Save token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"accessToken\", jsonData.access_token);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJleHAiOjE3MjQ4NjI0MDAuMH0.VLbrypeV2kihcMdX0rJGj6opPnHH6xmUm8Ki86-S7XQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "321",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get a list of notes",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJleHAiOjE3MjQ4NjI0MDAuMH0.VLbrypeV2kihcMdX0rJGj6opPnHH6xmUm8Ki86-S7XQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -28,6 +100,16 @@
 		{
 			"name": "Add a new note",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJleHAiOjE3MjQ4NjI0MDAuMH0.VLbrypeV2kihcMdX0rJGj6opPnHH6xmUm8Ki86-S7XQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -38,7 +120,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"title\": \"New note\", \"content\": \"Note text\"}",
+					"raw": "{\"title\": \"New note\", \"content\": \"Note texxt\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,6 +144,16 @@
 		{
 			"name": "Get the note",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJleHAiOjE3MjQ4NjI0MDAuMH0.VLbrypeV2kihcMdX0rJGj6opPnHH6xmUm8Ki86-S7XQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {

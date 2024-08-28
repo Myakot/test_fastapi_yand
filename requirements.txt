@@ -19,3 +19,4 @@ starlette==0.38.2
 typing_extensions==4.12.2
 uvicorn==0.30.6
 pytest~=8.3.2
+pyaspeller~=2.0.0
