@@ -9,10 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="32cb3327-ee13-4ed2-a639-726b5f2fddc3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curl_requests.md" beforeDir="false" afterPath="$PROJECT_DIR$/curl_requests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +60,14 @@
     "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test.test_create_note_invalid_spelling">
-    <configuration name="Python tests for test.test_create_note_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Python tests for tests.test" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="test_fastapi_yand" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,11 +78,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_create_note_invalid&quot;" />
+      <option name="_new_target" value="&quot;tests.test&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.test_create_note_invalid_spelling" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test.test_create_note_invalid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="test_fastapi_yand" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,11 +93,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_create_note_invalid_spelling&quot;" />
+      <option name="_new_target" value="&quot;tests.test.test_create_note_invalid&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.test_delete_all_notes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test.test_create_note_invalid_spelling" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="test_fastapi_yand" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,11 +108,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_delete_all_notes&quot;" />
+      <option name="_new_target" value="&quot;tests.test.test_create_note_invalid_spelling&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.test_get_note" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test.test_delete_all_notes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="test_fastapi_yand" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,11 +123,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_get_note&quot;" />
+      <option name="_new_target" value="&quot;tests.test.test_delete_all_notes&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test.test_get_notes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test.test_get_notes" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="test_fastapi_yand" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -132,17 +138,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_get_notes&quot;" />
+      <option name="_new_target" value="&quot;tests.test.test_get_notes&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test.test_create_note_invalid_spelling" />
-        <item itemvalue="Python tests.Python tests for test.test_delete_all_notes" />
-        <item itemvalue="Python tests.Python tests for test.test_create_note_invalid" />
-        <item itemvalue="Python tests.Python tests for test.test_get_notes" />
-        <item itemvalue="Python tests.Python tests for test.test_get_note" />
+        <item itemvalue="Python tests.Python tests for tests.test.test_create_note_invalid_spelling" />
+        <item itemvalue="Python tests.Python tests for tests.test.test_delete_all_notes" />
+        <item itemvalue="Python tests.Python tests for tests.test.test_create_note_invalid" />
+        <item itemvalue="Python tests.Python tests for tests.test.test_get_notes" />
+        <item itemvalue="Python tests.Python tests for tests.test" />
       </list>
     </recent_temporary>
   </component>

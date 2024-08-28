@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from fastapi.security import OAuth2PasswordRequestForm
 from psycopg2.extras import RealDictCursor
 from fastapi import FastAPI, Depends, HTTPException
-from auth import get_current_user, generate_token, User
+from app.auth import get_current_user, generate_token, User
 from pydantic import BaseModel
 from pyaspeller import YandexSpeller
 
