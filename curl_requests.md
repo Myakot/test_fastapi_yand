@@ -20,12 +20,6 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -d '{"title": "Updated Note", "content": "This is an updated note"}'
 
-# Обновить заметку в пустую
-curl -X PUT \
-  http://localhost:8000/notes/1 \
-  -H 'Content-Type: application/json' \
-  -d '{"title": "", "content": ""}'
-
 # Удалить конкретную заметку
 curl -X DELETE \
   http://localhost:8000/notes/1 \

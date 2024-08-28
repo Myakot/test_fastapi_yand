@@ -43,7 +43,7 @@ async def protected_route(current_user: User = Depends(get_current_user)):
 @app.post("/notes")
 async def create_note_route(note: Note):
     create_note_in_db(note)
-    return {"message": "Note added"}
+    return {"message": "Note added"}, 200
 
 
 def get_db_connection():
@@ -75,7 +75,7 @@ async def startup_event():
 async def get_notes():
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT * FROM notes;")
+    cur.execute("SELECT * FROM notes")
     notes = cur.fetchall()
     cur.close()
     conn.close()
@@ -106,7 +106,7 @@ def delete_all_notes():
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("DELETE FROM notes")
             conn.commit()
-    return {"message": "All notes deleted"}
+    return {"message": "All notes deleted"}, 200
 
 
 @app.delete("/notes/{note_id}")
@@ -115,18 +115,11 @@ async def delete_note(note_id: int):
     cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("DELETE FROM notes WHERE id = %s", (note_id,))
     if cur.rowcount == 0:
-        return JSONResponse(
-            content={"error": "Note not found"},
-            status_code=404,
-            media_type="application/json",
-        )
+        raise HTTPException(status_code=404, detail="Note not found")
     conn.commit()
     cur.close()
     conn.close()
-    return JSONResponse(
-        content={"message": "Note deleted successfully"},
-        media_type="application/json",
-    )
+    return JSONResponse(content={"message": "Note deleted successfully"}, media_type="application/json")
 
 
 @app.get("/notes/{note_id}")
