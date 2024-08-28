@@ -8,6 +8,13 @@ from main import app
 @pytest.fixture
 def client():
     client = TestClient(app)
+    response = client.post(
+        "/token",
+        data={"username": "your_username", "password": "your_password"},
+    )
+    token = response.json().get("access_token")
+    headers = {"Authorization": f"Bearer {token}"}
+    client.headers.update(headers)
     client.delete("/notes/")
     return client
 
@@ -16,6 +23,19 @@ def test_create_note(client):
     note = {"title": "Test note", "content": "This is a test note"}
     response = client.post("/notes", json=note)
     assert response.status_code == 200
+
+
+def test_create_note_invalid_spelling(client):
+    note = {"title": "Test note", "content": "texxt"}
+    response = client.post("/notes", json=note)
+    assert response.status_code == 200
+
+    expected_errors = [{'code': 1, 'pos': 0, 'row': 0, 'col': 0, 'len': 5, 'word': 'texxt',
+                        's': ['text', 'texture', 'txt', 'texet', 'texst', 'test', 'tex xt', 'texts', 'ext']}]
+
+    response_json = response.json()
+    assert 'errors' in response_json[0]
+    assert response_json[0]['errors'] == expected_errors
 
 
 def test_get_notes(client):
