@@ -30,11 +30,13 @@ def test_get_notes(client):
 def test_delete_all_notes(client):
     logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(__name__)
-    http_logger = logging.getLogger('http.client')
+    http_logger = logging.getLogger("http.client")
     http_logger.setLevel(logging.DEBUG)
 
     client.post("/notes", json={"title": "New note 1", "content": "Note text1"})
-    client.post("/notes", json={"title": "New note 2", "content": "Note text 2"})
+    client.post(
+        "/notes", json={"title": "New note 2", "content": "Note text 2"}
+    )
 
     logger.debug("Deleting all notes...")
     response = client.delete("/notes/")
@@ -46,7 +48,7 @@ def test_delete_all_notes(client):
     logger.debug(f"Get response status code: {response.status_code}")
     logger.debug(f"Get response content: {response.json()}")
     assert response.status_code == 200
-    assert len(response.json()['body']) == 2
+    assert len(response.json()["body"]) == 2
 
 
 def test_create_note_invalid(client):

@@ -38,7 +38,10 @@ def generate_token(user: User):
         SECRET_KEY,
         algorithm=ALGORITHM,
     )
-    return JSONResponse(content={"access_token": access_token, "token_type": "bearer"}, media_type="application/json")
+    return JSONResponse(
+        content={"access_token": access_token, "token_type": "bearer"},
+        media_type="application/json",
+    )
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):

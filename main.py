@@ -26,7 +26,9 @@ class Note(BaseModel):
 @app.get("/notes")
 async def get_notes_route():
     notes = await get_notes()
-    return JSONResponse(content=jsonable_encoder(notes), media_type="application/json")
+    return JSONResponse(
+        content=jsonable_encoder(notes), media_type="application/json"
+    )
 
 
 @app.post("/token")
@@ -37,7 +39,10 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @app.get("/protected")
 async def protected_route(current_user: User = Depends(get_current_user)):
-    return JSONResponse(content={"message": f"Hello, {current_user.username}!"}, media_type="application/json")
+    return JSONResponse(
+        content={"message": f"Hello, {current_user.username}!"},
+        media_type="application/json",
+    )
 
 
 @app.post("/notes")
@@ -79,7 +84,9 @@ async def get_notes():
     notes = cur.fetchall()
     cur.close()
     conn.close()
-    return JSONResponse(content=jsonable_encoder(notes), media_type="application/json")
+    return JSONResponse(
+        content=jsonable_encoder(notes), media_type="application/json"
+    )
 
 
 @app.put("/notes/{note_id}")
@@ -97,7 +104,6 @@ async def update_note(note_id: int, note: Note):
         content={"message": "Note updated successfully"},
         media_type="application/json",
     )
-
 
 
 @app.delete("/notes/")
@@ -119,7 +125,10 @@ async def delete_note(note_id: int):
     conn.commit()
     cur.close()
     conn.close()
-    return JSONResponse(content={"message": "Note deleted successfully"}, media_type="application/json")
+    return JSONResponse(
+        content={"message": "Note deleted successfully"},
+        media_type="application/json",
+    )
 
 
 @app.get("/notes/{note_id}")
